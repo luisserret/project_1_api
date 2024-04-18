@@ -2,24 +2,20 @@ version: '3.9'
 
 services:
   api:
-    build:
-      context: .
-      dockerfile: api/Dockerfile.api
+    image: api-project:v1
     ports:
       - 5000:5000
     networks:
       - web-net
-    # depends_on:
-    #   - frontend
 
   frontend:
-    build:
-      context: .
-      dockerfile: web/Dockerfile.web
+    image: web-project:v1
     ports:
       - 5173:5173
     networks:
       - web-net
+    depends_on:
+      - api
 
 networks:
   web-net:
