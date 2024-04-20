@@ -3,6 +3,8 @@ version: '3.9'
 services:
   api:
     image: api-project:v1
+    build:
+      context: backend
     ports:
       - 5000:5000
     networks:
@@ -10,6 +12,7 @@ services:
 
   frontend:
     image: web-project:v1
+    build: ./webapp
     ports:
       - 5173:5173
     networks:
